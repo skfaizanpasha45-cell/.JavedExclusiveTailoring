@@ -177,7 +177,7 @@ function showCategory(category) {
 
 function selectDesign(designName) {
 
-    const phoneNumber = "918884304733";
+    const phoneNumber = "918885304733";
 
     const message =
         "Hello Javed Exclusive Tailoring,%0A%0A" +
@@ -262,7 +262,7 @@ function previewDesign(event) {
 function sendUploadedDesign() {
 
     const phoneNumber =
-        "918884304733";
+        "918885304733";
 
     const message =
         "Hello Javed Exclusive Tailoring,%0A%0A" +
