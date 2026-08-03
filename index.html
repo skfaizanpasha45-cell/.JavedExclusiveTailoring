@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Javed Exclusive Tailoring | Guntur</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                JAVED
+                <span>EXCLUSIVE TAILORING</span>
+            </div>
+
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#why-us">Why Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- HOME / HERO -->
+    <section id="home" class="hero">
+
+        <img src="Own site/photo.png" alt="Banner">
+
+        <div class="hero-content">
+
+    
+
+            <p>
+                Perfect Fit | Premium Style
+            </p>
+
+            <a href="#contact" class="btn">
+                Book Your Order
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- WELCOME -->
+    <section id="about" class="welcome">
+
+        <h2>Welcome to Javed Exclusive Tailoring</h2>
+
+        <p>
+            Javed Exclusive Tailoring was started in 2014.
+            We specialize in premium shirts, pants, suits,
+            sherwanis and ethnic wear with perfect fitting
+            according to our customers' choice.
+        </p>
+
+        <a href="#contact" class="btn">
+            Book Now
+        </a>
+
+    </section>
+
+
+<!-- SERVICES / DESIGN CATALOGUE -->
+<section id="services" class="services">
+
+    <h2>Choose Your Style</h2>
+
+    <p class="section-text">
+        Select a category to explore our latest designs.
+    </p>
+
+    <!-- CATEGORY BUTTONS -->
+    <div class="category-buttons">
+
+        <button onclick="showCategory('suits')">
+            🤵 Suits
+        </button>
+
+        <button onclick="showCategory('shirts')">
+            👔 Shirts
+        </button>
+
+        <button onclick="showCategory('pants')">
+            👖 Pants
+        </button>
+
+        <button onclick="showCategory('sherwanis')">
+            👑 Sherwanis
+        </button>
+
+        <button onclick="showCategory('jodhpuri')">
+            🕴️ Jodhpuri
+        </button>
+
+        <button onclick="showCategory('alterations')">
+            ✂️ Alterations
+        </button>
+
+    </div>
+
+
+    <!-- MODEL GALLERY -->
+
+    <div id="modelGallery" class="model-gallery">
+
+        <h3>Select a category above</h3>
+
+        <p>
+            Tap any category to view available designs.
+        </p>
+
+    </div>
+
+
+    <!-- UPLOAD YOUR DESIGN -->
+
+    <div class="upload-design">
+
+        <h3>Have Your Own Design?</h3>
+
+        <p>
+            Upload an image of the design you like.
+        </p>
+
+        <label for="designUpload" class="upload-btn">
+            📷 Upload Your Design
+        </label>
+
+        <input
+            type="file"
+            id="designUpload"
+            accept="image/*"
+            onchange="previewDesign(event)"
+        >
+
+        <div id="uploadedImage"></div>
+
+    </div>
+
+</section>
+
+    <!-- HOW IT WORKS -->
+    <section class="process">
+
+        <h2>How It Works</h2>
+
+        <div class="steps">
+
+            <div class="step">
+                <span>1</span>
+                <h3>Choose Your Style</h3>
+                <p>
+                    Select your preferred design and style.
+                </p>
+            </div>
+
+
+            <div class="step">
+                <span>2</span>
+                <h3>Give Measurements</h3>
+                <p>
+                    Our expert tailor takes your measurements.
+                </p>
+            </div>
+
+
+            <div class="step">
+                <span>3</span>
+                <h3>Choose Fabric</h3>
+                <p>
+                    Select the fabric that matches your style.
+                </p>
+            </div>
+
+
+            <div class="step">
+                <span>4</span>
+                <h3>Get Your Perfect Fit</h3>
+                <p>
+                    Collect your beautifully tailored outfit.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+
+        <h2>Contact Us</h2>
+
+        <p>
+            Ready to get your perfect outfit?
+        </p>
+
+        <div class="contact-box">
+
+            <h3>Javed Exclusive Tailoring</h3>
+
+            <p>
+                📍 Arundelpet, Guntur, Andhra Pradesh
+            </p>
+
+            <p>
+                📞 8884304733
+            </p>
+
+            <p>
+                🕙 Open: 10:00 AM – 9:00 PM
+            </p>
+
+        </div>
+
+
+        <div class="contact-buttons">
+
+            <a href="tel:+918884304733" class="call-btn">
+    📞 Call Now
+            </a>
+              
+
+            <a
+                href="https://wa.me/918884304733"
+                class="whatsapp-btn"
+                target="_blank">
+                💬 WhatsApp
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>JAVED EXCLUSIVE TAILORING</h3>
+
+        <p>
+            Perfect Fit. Premium Style.
+        </p>
+
+        <p class="copyright">
+            © 2026 Javed Exclusive Tailoring.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
