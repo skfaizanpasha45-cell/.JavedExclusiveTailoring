@@ -129,28 +129,28 @@
 
     <!-- UPLOAD YOUR DESIGN -->
 
-    <div class="upload-design">
-
         <h3>Have Your Own Design?</h3>
 
         <p>
             Upload an image of the design you like.
         </p>
 
-        <label for="designUpload" class="upload-btn">
+    
             📷 Upload Your Design
-        </label>
+      
 
-        <input
-            type="file"
-            id="designUpload"
-            accept="image/*"
-            onchange="previewDesign(event)"
-        >
+  <input
+    type="file"
+    id="designUpload"
+    accept="image/*"
+    onchange="previewDesign(event)"
+/>
 
-        <div id="uploadedImage"></div>
+<div id="uploadedImage"></div>
 
-    </div>
+<button type="button" onclick="sendUploadedDesign()">
+    📲 Send Design on WhatsApp
+</button>
 
 </section>
 

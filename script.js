@@ -1,19 +1,16 @@
-// ================================
+// ===============================
 // MOBILE MENU
-// ================================
+// ===============================
 
 function toggleMenu() {
-
     const navLinks = document.getElementById("navLinks");
-
     navLinks.classList.toggle("active");
-
 }
 
 
-// ================================
-// MODEL DESIGNS
-// ================================
+// ===============================
+// DESIGN CATALOGUE
+// ===============================
 
 const designs = {
 
@@ -28,10 +25,9 @@ const designs = {
         },
         {
             image: "images/suits/suit3.jpg",
-            name: "Modern Designer Suit"
+            name: "Modern Slim Fit Suit"
         }
     ],
-
 
     shirts: [
         {
@@ -40,19 +36,18 @@ const designs = {
         },
         {
             image: "images/shirts/shirt2.jpg",
-            name: "Classic Casual Shirt"
+            name: "Classic Cotton Shirt"
         },
         {
             image: "images/shirts/shirt3.jpg",
-            name: "Designer Shirt"
+            name: "Modern Casual Shirt"
         }
     ],
-
 
     pants: [
         {
             image: "images/pants/pant1.jpg",
-            name: "Classic Formal Pant"
+            name: "Classic Formal Trouser"
         },
         {
             image: "images/pants/pant2.jpg",
@@ -63,7 +58,6 @@ const designs = {
             name: "Modern Fit Pant"
         }
     ],
-
 
     sherwanis: [
         {
@@ -80,7 +74,6 @@ const designs = {
         }
     ],
 
-
     jodhpuri: [
         {
             image: "images/jodhpuri/jodhpuri1.jpg",
@@ -96,7 +89,6 @@ const designs = {
         }
     ],
 
-
     alterations: [
         {
             image: "images/alterations/alteration1.jpg",
@@ -111,19 +103,23 @@ const designs = {
             name: "Pant Alterations"
         }
     ]
-
 };
 
 
-// ================================
+// ===============================
 // SHOW CATEGORY
-// ================================
+// ===============================
 
 function showCategory(category) {
 
     const gallery = document.getElementById("modelGallery");
 
     gallery.innerHTML = "";
+
+    if (!designs[category]) {
+        gallery.innerHTML = "<p>Designs not found.</p>";
+        return;
+    }
 
     const title = document.createElement("h3");
 
@@ -134,6 +130,11 @@ function showCategory(category) {
     gallery.appendChild(title);
 
 
+    const designContainer = document.createElement("div");
+
+    designContainer.className = "design-container";
+
+
     designs[category].forEach(function(design) {
 
         const card = document.createElement("div");
@@ -142,7 +143,6 @@ function showCategory(category) {
 
 
         card.innerHTML = `
-
             <img
                 src="${design.image}"
                 alt="${design.name}"
@@ -160,20 +160,21 @@ function showCategory(category) {
                 </button>
 
             </div>
-
         `;
 
 
-        gallery.appendChild(card);
+        designContainer.appendChild(card);
 
     });
 
+
+    gallery.appendChild(designContainer);
 }
 
 
-// ================================
+// ===============================
 // SELECT DESIGN
-// ================================
+// ===============================
 
 function selectDesign(designName) {
 
@@ -191,22 +192,17 @@ function selectDesign(designName) {
         "?text=" +
         message;
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
-
+    window.open(whatsappURL, "_blank");
 }
 
 
-// ================================
+// ===============================
 // UPLOAD YOUR OWN DESIGN
-// ================================
+// ===============================
 
 function previewDesign(event) {
 
-    const file =
-        event.target.files[0];
+    const file = event.target.files[0];
 
     const uploadedImage =
         document.getElementById("uploadedImage");
@@ -217,56 +213,105 @@ function previewDesign(event) {
         uploadedImage.innerHTML = "";
 
         return;
-
     }
 
 
-    const reader =
-        new FileReader();
+    const reader = new FileReader();
 
 
     reader.onload = function(e) {
 
         uploadedImage.innerHTML = `
 
-            <h3>Your Design</h3>
+            <div class="uploaded-preview">
 
-            <img
-                src="${e.target.result}"
-                alt="Uploaded Design"
-            >
+                <h3>Your Design</h3>
 
-            <br><br>
+                <img
+                    src="${e.target.result}"
+                    alt="Uploaded Design"
+                >
 
-            <button
-                class="select-design-btn"
-                onclick="sendUploadedDesign()"
-            >
-                Send Design on WhatsApp
-            </button>
+                <br><br>
+
+                <button
+                    class="select-design-btn"
+                    onclick="sendUploadedDesign()"
+                >
+                    📲 Send Design on WhatsApp
+                </button>
+
+            </div>
 
         `;
-
     };
 
 
     reader.readAsDataURL(file);
-
 }
 
 
-// ================================
-// UPLOADED DESIGN WHATSAPP
-// ================================
+// ===============================
+// SEND UPLOADED DESIGN
+// ===============================
 
-function sendUploadedDesign() {
+async function sendUploadedDesign() {
 
-    const phoneNumber =
-        "918885304733";
+    const fileInput =
+        document.getElementById("designUpload");
 
+    const file = fileInput.files[0];
+
+
+    if (!file) {
+
+        alert("Mundhu design select cheyyandi.");
+
+        return;
+    }
+
+
+    const phoneNumber = "918885304733";
+
+
+    // Mobile browser Web Share API
+    if (
+        navigator.share &&
+        navigator.canShare &&
+        navigator.canShare({ files: [file] })
+    ) {
+
+        const shareData = {
+
+            title: "Javed Exclusive Tailoring",
+
+            text:
+                "Hello Javed Exclusive Tailoring,\n\n" +
+                "I have uploaded a design that I would like to discuss with you.",
+
+            files: [file]
+        };
+
+
+        try {
+
+            await navigator.share(shareData);
+
+            return;
+
+        } catch (error) {
+
+            console.log("Share cancelled.");
+
+        }
+    }
+
+
+    // Fallback: open WhatsApp with text
     const message =
         "Hello Javed Exclusive Tailoring,%0A%0A" +
-        "I have uploaded a design that I would like to discuss with you.";
+        "I have a design that I would like to discuss with you.%0A%0A" +
+        "Please contact me for the design.";
 
     const whatsappURL =
         "https://wa.me/" +
@@ -274,9 +319,12 @@ function sendUploadedDesign() {
         "?text=" +
         message;
 
-    window.open(
-        whatsappURL,
-        "_blank"
-    );
 
+    window.open(whatsappURL, "_blank");
+
+
+    alert(
+        "Browser direct image sharing support ledu. " +
+        "WhatsApp open avutundi. Design ni WhatsApp lo manually attach cheyyandi."
+    );
 }
